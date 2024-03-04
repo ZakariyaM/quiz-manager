@@ -1,14 +1,20 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const dbConfig = require('./src/config/db');
 require("dotenv").config({ path: "./config.env" });
 
 const verifyToken = require("./src/routes/verifyToken");
 const port = process.env.PORT || 5000;
 
 // Initalise application through setting up configurations and usages of things like frameworks and tokens
-app.use(cors({origin: "*", exposedHeaders: ["auth-token"], credentials: true, optionSuccessStatus:200}))
+// app.use(cors({origin: "*", exposedHeaders: ["auth-token"], credentials: true, optionSuccessStatus:200}))
+const corsConfig = {
+    origin: '*',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+}
+app.use(cors(corsConfig))
+app.options("", cors(corsConfig))
 app.use(express.json())
 app.use("/auth", require("./src/routes/auth"))
 app.use("/quiz", verifyToken, require("./src/routes/quiz"))
