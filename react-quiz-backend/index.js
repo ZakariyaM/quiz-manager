@@ -7,7 +7,12 @@ const verifyToken = require("./src/routes/verifyToken");
 const port = process.env.PORT || 5000;
 
 // Initalise application through setting up configurations and usages of things like frameworks and tokens
-const corsConfig = {origin: "*", exposedHeaders: ["auth-token"], credentials: true, methods: ["GET", "POST", "PUT", "DELETE"]}
+const corsConfig = {
+    origin: "*",
+    exposedHeaders: ["auth-token"],
+    credentials: true, methods: ["GET", "POST", "PUT", "DELETE"],
+    optionsSuccessStatus: 200
+}
 
 app.options("", cors(corsConfig))
 app.use(cors(corsConfig))
