@@ -26,6 +26,7 @@
     "nodemon": "^2.0.15",
     "password-hash": "^1.2.2",
     "pg": "^8.11.3",
+    "postgres": "^3.4.3",
     "sqlite3": "^5.1.4"
   }
 }
