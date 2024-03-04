@@ -10,8 +10,7 @@ const port = process.env.PORT || 5000;
 const corsConfig = {
     origin: "*",
     exposedHeaders: ["auth-token"],
-    credentials: true, methods: ["GET", "POST", "PUT", "DELETE"],
-    optionsSuccessStatus: 200
+    credentials: true, methods: ["GET", "POST", "PUT", "DELETE"]
 }
 
 app.options("", cors(corsConfig))
