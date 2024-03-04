@@ -1,4 +1,4 @@
-# Online assesment - quiz application (SEA module)
+# Online assesment - quiz application
 A React Quiz App with ReactJS as front-end and NodeJS backend with PostgreSQL database, this document gives a brief overview on the application and what was used to make it. However some parts may not delve into great detail here, but this is due to them being elaborated further in the report! 
 
 ### *Background and context*
