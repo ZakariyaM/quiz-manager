@@ -8,7 +8,7 @@ const verifyToken = require("./src/routes/verifyToken");
 const port = process.env.PORT || 5000;
 
 // Initalise application through setting up configurations and usages of things like frameworks and tokens
-app.use(cors({origin: "*", exposedHeaders: ["auth-token"]}))
+app.use(cors({origin: "https://quiz-manager-frontend.vercel.app'", exposedHeaders: ["auth-token"]}))
 app.use(express.json())
 app.use( "/auth", require("./src/routes/auth"))
 app.use( "/quiz", verifyToken, require("./src/routes/quiz"))
