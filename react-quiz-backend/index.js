@@ -8,9 +8,10 @@ const port = process.env.PORT || 5000;
 
 // Initalise application through setting up configurations and usages of things like frameworks and tokens
 const corsConfig = {
-    origin: "*",
+    origin: "quiz-manager-three.vercel.app",
     exposedHeaders: ["auth-token"],
-    credentials: true, methods: ["GET", "POST", "PUT", "DELETE"]
+    credentials: true, 
+    methods: ["GET", "POST", "PUT", "DELETE"]
 }
 
 app.options("", cors(corsConfig))
