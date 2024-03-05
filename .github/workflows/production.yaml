@@ -40,7 +40,7 @@ jobs:
               run: npm install --no-fund --ignore-scripts --prefix
 
             - name: Run tests
-              run: npm run test:prod
+              run: npm run test:prod --no-fund --ignore-scripts --prefix
 
 
     Deploy-Production:
