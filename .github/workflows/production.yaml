@@ -37,10 +37,10 @@ jobs:
                 node-version: 18
 
             - name: Install dependencies
-            - run: npm ci
+              run: npm ci
 
             - name: Run tests
-            - run: npm run test:prod
+              run: npm run test:prod
 
 
     Deploy-Production:
