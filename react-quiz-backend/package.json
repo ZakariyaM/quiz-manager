@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha --timeout 10000",
+    "test:prod": "npm test -- --browsers=ChromeHeadless --watch=false" 
   },
   "keywords": [],
   "author": "",
@@ -21,7 +22,7 @@
     "express": "^4.17.2",
     "joi": "^17.5.0",
     "jsonwebtoken": "^9.0.0",
-    "mocha": "^10.2.0",
+    "mocha": "^10.3.0",
     "n": "^9.1.0",
     "nodemon": "^2.0.15",
     "password-hash": "^1.2.2",

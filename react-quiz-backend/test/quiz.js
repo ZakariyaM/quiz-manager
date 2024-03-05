@@ -5,8 +5,8 @@ const pool = require('./config/db');
 
 var expect = chai.expect;
 
-const uri = `http://localhost:5002/quiz`
-const authUri = 'http://localhost:5002/auth'
+const uri = `https://quiz-manager-three.vercel.app/quiz`
+const authUri = 'https://quiz-manager-three.vercel.app/auth'
 
 describe('Quiz', function () {
 

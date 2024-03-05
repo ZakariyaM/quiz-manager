@@ -1,6 +1,4 @@
 const assert = require('assert');
-// const sqlite3 = require('sqlite3').verbose()
-// const db = new sqlite3.Database('./db.sqlite')
 const pool = require('./config/db');
 const axios = require('axios');
 const passwordHash = require('password-hash')
@@ -8,7 +6,7 @@ const chai = require('chai')
 
 var expect = chai.expect;
 
-const uri = `http://localhost:5002/auth`
+const uri = `https://quiz-manager-three.vercel.app/auth`
 
 describe('User', function () {
 
