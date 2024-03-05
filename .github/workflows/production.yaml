@@ -20,8 +20,7 @@ jobs:
               with:
                 node-version: 18
 
-            - run: npm install --package-lock-only
-            - run: npm ci
+            - run: npm install
 
             - run: npm run test:prod
 
