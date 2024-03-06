@@ -37,7 +37,7 @@ jobs:
                 node-version: 18
 
             - name: Install dependencies
-              run: npm install --no-fund --ignore-scripts --prefix
+              run: npm install --no-fund --ignore-scripts --prefix react-quiz-backend
 
             - run: npm ci
 
