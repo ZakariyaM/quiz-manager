@@ -146,7 +146,7 @@ quizRoutes.route("/:id").get(async (req, res) => {
 
       const temporaryQuestion = { ...question };
       temporaryQuestion.choices = choices.map(choice => choice.body);
-      const answerIndex = choices.findIndex(choice => choice.id === question.answerId);
+      const answerIndex = choices.findIndex(choice => choice.id === question.answerid);
       temporaryQuestion.answerIndex = answerIndex;
       temporaryQuestions.push(temporaryQuestion);
     }
