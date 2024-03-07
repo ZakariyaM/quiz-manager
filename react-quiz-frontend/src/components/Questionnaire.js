@@ -39,31 +39,30 @@ function Questionnaire({
           marginTop: 50,
         }}
       >
-        {choices.map((choice, index) => {
-          const picked = answerPicked[questionNumber] === choice;
-          const rightAnswer = choice === answer;
-          return (
-            <div style={{ display: "flex" }}>
-              <ChoiceButton
-                style={{
-                  borderWidth: picked ? 3 : 0,
-                  borderColor: "black",
-                  fontWeight: picked ? "bold" : "normal"
-                }}
-                key={`choice${index}`}
-                onClick={() => handleAnswer(choice)}
-                title={choice}
-              />
-              {showAnswer ? (
-                rightAnswer ? (
-                  <p style={{ marginLeft: 10, marginTop: 5 }}> ✅</p>
-                ) : (
-                  <p style={{ marginLeft: 10, marginTop: 5 }}>❌</p>
-                )
-              ) : null}
-            </div>
-          );
-        })}
+      {choices.map((choice, index) => {
+        const picked = answerPicked[questionNumber] === choice;
+        const rightAnswer = choice === answer;
+        return (
+          <div style={{ display: "flex" }}>
+            <ChoiceButton
+              style={{
+                borderWidth: picked ? 3 : 0,
+                borderColor: "black",
+                fontWeight: picked ? "bold" : "normal"
+              }}
+              key={`choice${index}`}
+              onClick={() => handleAnswer(choice)}
+              title={choice}
+            />
+            {showAnswer && rightAnswer && (
+              <p style={{ marginLeft: 10, marginTop: 5 }}>✅</p>
+            )}
+            {showAnswer && !rightAnswer && (
+              <p style={{ marginLeft: 10, marginTop: 5 }}>❌</p>
+            )}
+          </div>
+        );
+      })}
       </div>
       <div className="row">
         {questionNumber !== 0 ? (
