@@ -49,9 +49,15 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
-
+            
+            - uses: pnpm/action-setup@v2
+              name: Install pnpm
+              id: pnpm-install
+              with:
+                version: 7
+                run_install: false
             - name: Install Vercel CLI
-              run: npm install --global vercel
+              run: pnpm add --global vercel@latest
 
             - name: Pull Vercel Environment Information
               run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
