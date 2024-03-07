@@ -24,8 +24,6 @@ function Quiz(props) {
   };
 
   const calculateScore = (pickedAnswers, answers) => {
-    console.log(answers)
-    console.log(pickedAnswers)
     const numberOfQuestions = answers.length;
     let correctAnswers = 0;
     pickedAnswers.forEach((item, index) => {
@@ -91,29 +89,11 @@ function Quiz(props) {
       </button>
       {!started ? <StartingPage /> : null}
       {started && questionNumber < quiz.questions.length ? (
-        // <Questionnaire
-        //   answer={
-        //     quiz.questions[questionNumber].choices[
-        //       quiz.questions[questionNumber].answerid
-        //     ]
-        //   }
-        //   question={quiz.questions[questionNumber].body}
-        //   isLastQuestion={questionNumber === quiz.questions.length - 1}
-        //   choices={quiz.questions[questionNumber].choices}
-        //   setQuestionNumber={setQuestionNumber}
-        //   questionNumber={questionNumber}
-        //   setAnswerPicked={setAnswerPicked}
-        //   answerPicked={answerPicked}
-        // />
         <Questionnaire
           answer={
             (() => {
               const answerIndex = quiz.questions[questionNumber].answerid;
               const answer = quiz.questions[questionNumber].choices[answerIndex - 1];
-              console.log(quiz.questions, "this is the questions")
-              console.log(quiz.questions[questionNumber], "this is the questions number")
-              console.log(quiz.questions[questionNumber].choices, "this is the choices")
-              console.log(answer, "this is the answer id")
               return answer;
             })()
           }
