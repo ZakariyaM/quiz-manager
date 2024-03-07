@@ -1,5 +1,5 @@
 # Online assesment - quiz application
-A React Quiz App with ReactJS as front-end and NodeJS backend with PostgreSQL database, this document gives a brief overview on the application and what was used to make it. However some parts may not delve into great detail here, but this is due to them being elaborated further in the report! 
+A React Quiz App with ReactJS as front-end and NodeJS backend with PostgreSQL database, this document gives a brief overview on the application and how it was implemented!
 
 ### *Background and context*
 As a new joiner at Amazon, you are required to complete a series of trainings designed to assist you get familiar with the team's procedures, services, and systems.
@@ -23,9 +23,17 @@ The two different access levels and their level of control + features
 - Edit quiz page - Users may go through and edit a quiz to add/remove questions due to new content needing to be added or old content needing to be removed, we have made this feature open to regular users as we believe it would be good for new joiners to update this themselves to show their knowledge instead of relying on an existing team member.
 - Create quiz page (admin only) - an admin can create a new quiz that can then be seen by all users to edit or complete.
 
+### *Flowchart of application flow*
+
+For the technical flow of my application, I have created a high-level flowchart diagram as seen below that illustrates a user's experience based on conditions and features, as well as how the user can navigate from the beginning to the end of the application through multiple pages.
+
+![Flowchart Diagram](./documentation/QuizFlowchart.png)
+
 ### *Database design*
 
-The database design can be seen in further detail in the report with the diagrams for further clarity.
+The database design can be seen in the diagram below with each field also depicted below that.
+
+![Class Diagram](./documentation/ClassDiagram.png)
 
 Tables used can be seen below:
 ```
@@ -240,7 +248,7 @@ I used the code formatter Prettier to ensure correct syntax and indentation whil
 
 1. Firstly, ensure you have an IDE to open the code, I would recommend installing VSC (Visual Studio Code) if you do not have it already. This can be done here using this [URL](https://code.visualstudio.com/download).
 
-2. Now having installed an IDE to open the project, please download the zip files of the project and open it up. (_One option is to open both files `react-quiz` and `react-quiz-server` in different windows so they are separate, this is due to both needing to be run on CLI, the BETTER option would be to open the parent folder `quiz-manager` and use split terminals which can be found at the top dropdown -> `Terminal -> Split Terminal`_)
+2. Now having installed an IDE to open the project, please download the zip files of the project and open it up. (_One option is to open both files `react-quiz-frontend` and `react-quiz-backend` in different windows so they are separate, this is due to both needing to be run on CLI, the BETTER option would be to open the parent folder `quiz-manager` and use split terminals which can be found at the top dropdown -> `Terminal -> Split Terminal`_)
 
 3. On each of your two terminals displayed now, `cd` into each of them on the two; so run the following commands;
 
@@ -260,26 +268,30 @@ cd react-quiz-frontend
     
     To verify node was installed please enter `node-v` on one of the open terminals, you should now see the version, if not please refollow the steps to install node again. Please now run `npm install` on both open terminals which should install all the node modules needed and dependencies to your machine. If this fails try running `npm install -g express` or `npm update`.
 
-5. After succesfully installing all node modules, the terminal may raise some vulnerabilites which is in regards to some node modules not using the latest version, these can be ignored! Please now go ahead and run `npm start` on the terminal in the filepath of `react-quiz-server` first to get the database and backend running followed by running `npm start` on the other terminal `react-quiz` to run the frontend. If unsure which terminal is in which repository, please run `pwd` which should tell you where you currently are for each of the terminals. 
+5. Before running both packages updates need to be made to the code.
+    - Firstly, in the `react-quiz-bakcend` package, navigate to the `index.js` file and update the `origin` within the `corsConfig` from `https://quiz-manager-frontend.vercel.app` to `*`.
+    - Secondly, in the `react-quiz-frontend` package, navigate to the `constant.js` file and update the current value with the below:
+    ```
+    const constants = {
+        API_ENDPOINT_BASE_URL: "localhost:5002"
+    };
+    ```
+
+6. After succesfully installing all node modules and updating the values, the terminal may raise some vulnerabilites which is in regards to some node modules not using the latest version, these can be ignored! Please now go ahead and run `npm start` on the terminal in the filepath of `react-quiz-bakcend` first to get the database and backend running followed by running `npm start` on the other terminal `react-quiz-frontend` to run the frontend. If unsure which terminal is in which repository, please run `pwd` which should tell you where you currently are for each of the terminals. 
 e.g 
 ```
 /Users/zkariy/Documents/quiz-manager/react-quiz-frontend
 ```
 
-6. Once running a browser should open up of the page and application, login details can be found below. However if nothing opens, please navigate to this URL - `http://localhost:3000/`
+7. Once running a browser should open up of the page and application, login details can be found below. However if nothing opens, please navigate to this URL - `http://localhost:3000/`
 
 ### User details
 Admin Account - this record was added as pre-configured data already, it isn't possible to register as an admin user, it will always be a regular account.
 - Username: admin
 - Password: admin
 
-# Instructions on how to run unit tests
-- Firstly, ensure that the package `react-quiz-backend` is running, to get it up and running please follow the above commands in setup instructions. From here open a new split terminal and cd into `react-quiz-backend`, so you should now have 2 terminals that are both in the same directory `react-quiz-backend`. One with the server running and one not, from here run the command `npm test` which will now run all the unit tests and will display the result of all cases.
-
-e.g `15 passing` should be seen on the CLI after having run `npm test`.
-
 Regular Account 
 - Go ahead and register a new one for yourself!
 
-### Common Issue
+### Common Issue for running on local
 - `npm: command not found` - please ensure node.js is installed and if it already is, please re-install it on their [website](https://nodejs.org/en/download)
