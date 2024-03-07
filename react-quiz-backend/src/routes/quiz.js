@@ -53,8 +53,8 @@ async function insertQuestionsAndChoicesOnCreate(question, index, quizID) {
 
 async function insertQuestionsAndChoicesOnEdit(question, id, index) {
   try {
-    const insertQuestionSql = 'INSERT INTO questions (body, quizId, number) VALUES ($1, $2, $3) RETURNING id';
-    const { rows } = await pool.query(insertQuestionSql, [question.body, id, index + 1]);
+    const insertQuestionSql = 'INSERT INTO questions (body, quizId, number) VALUES ($1, $2, $3,  $4) RETURNING id';
+    const { rows } = await pool.query(insertQuestionSql, [question.body, question.answerIndex + 1, id, index + 1]);
     const questionID = rows[0].id;
 
     const secondPromises = question.choices.map((choice, index) => {
