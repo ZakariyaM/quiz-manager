@@ -109,7 +109,7 @@ function Quiz(props) {
           answer={
             (() => {
               const answer = quiz.questions[questionNumber].choices[
-                quiz.questions[questionNumber].answerid
+                quiz.questions[questionNumber].choices[answerid - 1]
               ];
               console.log(quiz.questions, "this is the questions")
               console.log(quiz.questions[questionNumber], "this is the questions number")
