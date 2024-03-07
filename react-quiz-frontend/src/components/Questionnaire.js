@@ -40,10 +40,12 @@ function Questionnaire({
         }}
       >
       {choices.map((choice, index) => {
+        console.log({answer})
+        console.log(choice)
         const picked = answerPicked[questionNumber] === choice;
         const rightAnswer = choice === answer;
-        console.log(rightAnswer, "this is the right answer")
-        console.log(picked, "this was the answer picked")
+        console.log({rightAnswer})
+        console.log({picked})
         return (
           <div style={{ display: "flex" }}>
             <ChoiceButton
