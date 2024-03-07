@@ -18,7 +18,7 @@ function Questionnaire({
 }) {
   const { user } = useContext(UserContext);
   const [showAnswer, setShowAnswer] = useState(false);
-  const isAdmin = user.accountType === "ADMIN"
+  const isAdmin = user.accounttype === "ADMIN"
 
   const handleAnswer = (choice) => {
     const temporaryState = [...answerPicked];

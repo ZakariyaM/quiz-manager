@@ -111,7 +111,7 @@ function Quiz(props) {
           pickedAnswers={answerPicked}
           score={calculateScore(
             answerPicked,
-            quiz.questions
+            quiz.questions.map(item => item.choices[item.answerid])
           )}
         />
       ) : null}
