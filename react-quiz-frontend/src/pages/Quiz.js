@@ -24,6 +24,8 @@ function Quiz(props) {
   };
 
   const calculateScore = (pickedAnswers, answers) => {
+    console.log(answers)
+    console.log(pickedAnswers)
     const numberOfQuestions = answers.length;
     let correctAnswers = 0;
     pickedAnswers.forEach((item, index) => {
