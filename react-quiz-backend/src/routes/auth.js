@@ -50,7 +50,6 @@ authRoutes.route("/login").post(async (req, res) => {
       // Reset failed login attempts counter upon successful login
       loginAttempts[user.username] = { count: 0, lockoutTime: 0 };
 
-      // Create a new object with only the desired fields
       const userResponse = {
         id: rows[0].id,
         username: rows[0].username,

@@ -44,10 +44,6 @@ jobs:
             - name: Run tests
               run: npm run test:prod --prefix react-quiz-backend
 
-            # - name: Run tests
-            #   run: npm run test --no-fund --ignore-scripts --prefix
-
-
     Deploy-Production:
         needs: [Test]
         runs-on: ubuntu-latest
