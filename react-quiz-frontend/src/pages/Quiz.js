@@ -94,7 +94,7 @@ function Quiz(props) {
         <Questionnaire
           answer={
             quiz.questions[questionNumber].choices[
-              quiz.questions[questionNumber].answerIndex
+              quiz.questions[questionNumber].answerid
             ]
           }
           question={quiz.questions[questionNumber].body}
@@ -111,7 +111,7 @@ function Quiz(props) {
           pickedAnswers={answerPicked}
           score={calculateScore(
             answerPicked,
-            quiz.questions.map(item => item.answerid)
+            quiz.questions.map(item => item.choices[item.answerid - 1])
           )}
         />
       ) : null}
