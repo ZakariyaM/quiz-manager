@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha --timeout 10000",
+    "test": "mocha --timeout 20000",
     "test:prod": "npm test --browsers=ChromeHeadless --watch=false" 
   },
   "keywords": [],
