@@ -1,6 +1,6 @@
 const chai = require('chai')
 const axios = require('axios');
-const passwordHash = require('password-hash')
+const bcrypt = require('bcrypt')
 const pool = require('./config/db');
 
 var expect = chai.expect;
@@ -17,7 +17,7 @@ describe('Quiz', function () {
   before((done) => {
     const testUserData = {
       username: 'testUser',
-      password: passwordHash.generate('testUserPassword'),
+      password: bcrypt.hashSync('testUserPassword', bcrypt.genSaltSync(10)),
       accounttype: 'ADMIN'
     }
     const sql = `INSERT INTO users (username, password, accountType) VALUES ($1, $2, $3)`
