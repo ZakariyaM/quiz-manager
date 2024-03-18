@@ -197,7 +197,7 @@ The dependencies have been illustrated in the first section of the report with t
 - PostgreSQL - database
 - ExpressJs - framework used
 - JsonWebToken - needed for framework
-- Password-hash - hash password before being stored
+- bcrypt - hash and salt password before being stored
 - Cors - connect/express milddeware 
 - Dotenv - loads environment variables into process.env
 - Mocha - testing framework

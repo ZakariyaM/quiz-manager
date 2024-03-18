@@ -1,6 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const passwordHash = require("password-hash");
+const bcrypt = require('bcrypt');
 const authRoutes = express.Router();
 const Joi = require("joi");
 const pool = require('../config/db');
@@ -45,7 +45,7 @@ authRoutes.route("/login").post(async (req, res) => {
       return res.status(400).send(`Username does not exist, please register an account for "${user.username}" to proceed`);
     }
 
-    const isValidPassword = passwordHash.verify(user.password, rows[0].password);
+    const isValidPassword = bcrypt.compareSync(user.password, rows[0].password);
     if (isValidPassword) {
       // Reset failed login attempts counter upon successful login
       loginAttempts[user.username] = { count: 0, lockoutTime: 0 };
@@ -94,12 +94,13 @@ authRoutes.route("/register").post(async (req, res) => {
     }
 
     
-    // Use of npm library passsword hash, hashes and adds a salt to the new password created by the user to store in the database.
+    // Use of npm library bcrypt.js, hashes and adds a salt to the new password created by the user to store in the database.
     // The salt for each password is different for every user 
-    // OWASP - Cryptographic failures 
-    const hashedPassword = passwordHash.generate(user.password);
+    // OWASP - Cryptographic failures
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(user.password, salt);
     const sql = `INSERT INTO users (username, password, accountType) VALUES ($1, $2, $3) RETURNING *`;
-    const insertedUser = await pool.query(sql, [user.username, hashedPassword, commonUserAccountType]);
+    const insertedUser = await pool.query(sql, [user.username, hash, commonUserAccountType]);
 
     const token = jwt.sign({ id: insertedUser.rows[0].id }, process.env.JWT_SECRET);
     res.header("auth-token", token).send({
