@@ -45,10 +45,11 @@ jobs:
             - name: Install dependencies
               run: npm install --no-fund --ignore-scripts --prefix react-quiz-backend
 
-            - run: npm ci
-
-            - name: Run tests
-              run: npm run test:prod --prefix react-quiz-backend
+            - name: Run Tests
+              run: |
+                cd react-quiz-backend
+                npm ci
+                npm run test:prod
 
     Deploy-Production:
         needs: [Test]
