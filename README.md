@@ -201,29 +201,36 @@ The dependencies have been illustrated in the first section of the report with t
 - Cors - connect/express milddeware 
 - Dotenv - loads environment variables into process.env
 - Mocha - testing framework
-- Joi - Object scheme validation
+- Joi - Object scheme validation to validate all input fields by the user.
 - Nodemon - helps develop apps by auto restarting the node application so changes are reflected live on screen without need of refreshing or running command again.
 
 All dependencies can also be seen in the `package.json` file under `dependencies`.
 
 ## Project Structure 
-###`react-quiz-backend` - backend package
-####`src/routes`
+### `react-quiz-backend` - backend package
+
+#### `src/routes`
 This directory contains the definitions for all the different routes and API endpoints including both users and quiz.
-####`src/config`
+
+#### `src/config`
 This directory contains the database config for the setup of the PostgreSQL database
 
-####`test`
+#### `test`
 Contains the Mocha unit tests for quiz and users APIs.
 
-###`react-quiz-frontend` - frontend package
-####`src/api`
+
+### `react-quiz-frontend` - frontend package
+
+#### `src/api`
 Contains all API endpoints from the backend, this serves as the connection for the APIs between frontend and backend.
-####`src/components`
-Contain all the React components created as well as page functionalities.
-####`src/pages`
-Contains all the different frontend pages.
-####`src/styles`
+
+#### `src/components`
+Contain all the React components created as well as page functionalities. Such components allows for sharing of functionallity for different pages to prevent duplicated code and prevent redundant code.
+
+#### `src/pages`
+Contains all the different frontend pages for the application.
+
+#### `src/styles`
 Contains different styles used throughout such as colours.
 
 
